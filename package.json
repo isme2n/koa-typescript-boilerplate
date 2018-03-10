@@ -1,0 +1,76 @@
+{
+  "name": "koa-es7-boilerplate",
+  "version": "0.0.0",
+  "description": "A boilerplate for writing Koa 2 apps with Babel.",
+  "author": "Jeff Hansen",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=3.8"
+  },
+  "scripts": {
+    "start": "tsc && cross-env NODE_ENV=production node dist/bin/www.js",
+    "build": "tsc -p tsconfig.json",
+    "watch":
+      "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' src/bin/www.ts",
+    "dev": "tsc && nodemon dist/bin/www.js",
+    "test": "cross-env NODE_ENV=test jest --no-cache",
+    "cover": "npm run test -- --coverage",
+    "lint": "eslint --fix src && prettier --write \"src/**/*.js\"",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "@types/glob": "^5.0.35",
+    "@types/jest": "^22.2.0",
+    "@types/koa": "2.0.39",
+    "@types/koa-router": "7.0.23",
+    "cross-env": "5.0.5",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "lint-staged": "^7.0.0",
+    "nodemon": "1.12.0",
+    "prettier": "^1.11.1",
+    "smid": "^0.1.1",
+    "ts-node": "3.3.0",
+    "tslint": "5.7.0",
+    "typescript": "2.5.2"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "@types/dotenv": "^4.0.2",
+    "awilix": "^2.10.0",
+    "awilix-koa": "^1.0.2",
+    "awilix-router-core": "^1.3.2",
+    "axios": "^0.17.1",
+    "bristol": "^0.3.3",
+    "dotenv": "^5.0.1",
+    "fejl": "^1.0.2",
+    "keyblade": "^0.3.2",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compress": "^2.0.0",
+    "koa-respond": "^1.0.1",
+    "koa-router": "^7.3.0",
+    "lodash": "^4.17.4",
+    "palin": "^2.2.0",
+    "yenv": "^1.0.6"
+  },
+  "lint-staged": {
+    "*.{ts,js,json,css,md}": ["prettier --write", "git add"]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  },
+  "jest": {
+    "testMatch": ["**/__tests__/**/*.test.ts"],
+    "testEnvironment": "node",
+    "collectCoverageFrom": ["src/**/*.ts"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "__tests__",
+      "src/lib/env",
+      "src/bin"
+    ]
+  }
+}
